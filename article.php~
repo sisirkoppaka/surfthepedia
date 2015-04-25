@@ -1,0 +1,36 @@
+<?php
+if($_POST['q'] == "")
+{
+   echo "<script type=\"text/javascript\">divSummary.innerHTML='<p class=\"big\"><b>Type a topic above and wait for results.</b></p>
+
+                <p class=\"center\">A brief summary of the requested topic will appear instantly.</p>'"
+
+}
+else {
+$html = @file_get_contents("http://en.wikipedia.org/wiki/"+$_POST['q']);
+$dom = @DOMDocument::loadHTML($html);
+$xpath = new domXPath($dom);
+$results = $xpath->query('/html/body/div/div/div/div[2]/p');
+echo "<script type=\"text/javascript\">divSummary.innerHTML = $results;
+var sum = divSummary.innerHTML;
+ </script>";
+
+echo "<script type=\"text/javascript\">divSummary.innerHTML = $results;";
+echo 'var sum = divSummary.innerHTML;';
+
+
+
+echo 'if (sum.indexOf("Wikipedia does not have an article with this exact name.") > 0) {)';
+echo 'divSummary.innerHTML = \'<p style="color:#ff0000;" class="big">No results found for "hello".</p>\';';
+echo "}</script>"
+}	
+
+#divSummary.innerHTML = $results;
+#var sum = divSummary.innerHTML;
+
+#if (sum.indexOf("Wikipedia does not have an article with this exact name.") > 0) {
+#	divSummary.innerHTML = '<p style="color:#ff0000;" class="big">No results found for "Dog".</p>';
+}	
+	
+?>
+

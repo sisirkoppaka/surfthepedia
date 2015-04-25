@@ -1,0 +1,17 @@
+.buttonscontainer {width: 20px;}
+
+.buttons a {color: #6633FF;
+background-color: #FFFFFF;
+padding: 2px;
+padding-left: 3px;
+display: block;
+font: 13px Trebuchet MS, sans-serif;
+font-weight: bold;
+text-decoration: none;
+text-align: left;}
+
+.buttons a:hover {background-color: #6633FF;
+color: #FFFFFF;
+text-decoration: none;}
+
+
